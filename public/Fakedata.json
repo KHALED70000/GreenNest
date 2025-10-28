@@ -1,0 +1,122 @@
+[
+  {
+    "plantId": 1,
+    "plantName": "Snake Plant",
+    "category": "Air Purifier",
+    "price": 18,
+    "rating": 4.8,
+    "availableStock": 10,
+    "careLevel": "Easy",
+    "description": "A hardy plant that purifies indoor air and thrives in low light.",
+    "image": "https://media.istockphoto.com/id/1247359811/photo/close-up-of-snake-plants-for-sale.jpg?s=1024x1024&w=is&k=20&c=0dJn1bfDVDBgY1EVYJDkecx_YYe2oMBCdiE5klRMhCo=",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 2,
+    "plantName": "Aloe Vera",
+    "category": "Medicinal",
+    "price": 15,
+    "rating": 4.7,
+    "availableStock": 14,
+    "careLevel": "Easy",
+    "description": "A soothing succulent known for its healing properties and minimal care needs.",
+    "image": "https://cdn.shopify.com/s/files/1/0691/8363/5772/files/Aloe_Vera_Plant1_1_600x600.jpg?v=1740762150",
+    "providerName": "Leaf & Life"
+  },
+  {
+    "plantId": 3,
+    "plantName": "Peace Lily",
+    "category": "Flowering",
+    "price": 22,
+    "rating": 4.9,
+    "availableStock": 8,
+    "careLevel": "Medium",
+    "description": "Elegant white flowers and glossy leaves that brighten any room while purifying air.",
+    "image": "https://cdn11.bigcommerce.com/s-fr32feerow/images/stencil/832x750/uploaded_images/peace-lily-01.jpg?t=1483630233",
+    "providerName": "PureRoots"
+  },
+  {
+    "plantId": 4,
+    "plantName": "Spider Plant",
+    "category": "Air Purifier",
+    "price": 16,
+    "rating": 4.6,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "Fast-growing plant with striped leaves that remove toxins from indoor air.",
+    "image": "https://www.shutterstock.com/shutterstock/photos/2562414859/display_1500/stock-photo--healthy-spider-plant-leaves-boost-your-indoor-environment-2562414859.jpg",
+    "providerName": "NatureNest"
+  },
+  {
+    "plantId": 5,
+    "plantName": "Money Plant",
+    "category": "Climber",
+    "price": 12,
+    "rating": 4.5,
+    "availableStock": 20,
+    "careLevel": "Easy",
+    "description": "A popular vine symbolizing prosperity and good luck, grows easily in water or soil.",
+    "image": "https://images.unsplash.com/photo-1579621970590-9d624316904b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "providerName": "UrbanGreen Studio"
+  },
+  {
+    "plantId": 6,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Decorative",
+    "price": 35,
+    "rating": 4.7,
+    "availableStock": 5,
+    "careLevel": "Hard",
+    "description": "A large-leafed beauty that adds an elegant touch to modern interiors.",
+    "image": "https://www.palasa.co.in/cdn/shop/articles/IMG_20220226_173034_1.jpg?v=1694161186&width=1500",
+    "providerName": "The Green Corner"
+  },
+  {
+    "plantId": 7,
+    "plantName": "ZZ Plant",
+    "category": "Low Light",
+    "price": 25,
+    "rating": 4.8,
+    "availableStock": 9,
+    "careLevel": "Easy",
+    "description": "Thrives in low light and drought conditions, perfect for beginners.",
+    "image": "https://images.pexels.com/photos/4503273/pexels-photo-4503273.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "providerName": "Leaf & Life"
+  },
+  {
+    "plantId": 8,
+    "plantName": "Rubber Plant",
+    "category": "Indoor Foliage",
+    "price": 28,
+    "rating": 4.6,
+    "availableStock": 7,
+    "careLevel": "Medium",
+    "description": "A bold, glossy plant that adds vibrant green tones to your home.",
+    "image": "https://www.gardendesign.com/pictures/images/320x320Exact/site_3/chroma-chloe-rubber-plant-ficus-elastica-proven-winners_18557.jpg",
+    "providerName": "BotaniCo"
+  },
+  {
+    "plantId": 9,
+    "plantName": "Boston Fern",
+    "category": "Hanging",
+    "price": 20,
+    "rating": 4.4,
+    "availableStock": 11,
+    "careLevel": "Medium",
+    "description": "A lush hanging plant that loves humidity and filters indoor air beautifully.",
+    "image": "https://thumbs.dreamstime.com/b/woman-holding-nephrolepis-exaltata-bostoniensis-boston-fern-woman-holding-nephrolepis-exaltata-bostoniensis-boston-fern-191632690.jpg",
+    "providerName": "PureRoots"
+  },
+  {
+    "plantId": 10,
+    "plantName": "Lucky Bamboo",
+    "category": "Water Plant",
+    "price": 19,
+    "rating": 4.9,
+    "availableStock": 15,
+    "careLevel": "Easy",
+    "description": "Symbol of good fortune, grows beautifully in water with minimal maintenance.",
+    "image": "https://www.urbanplant.in/cdn/shop/files/size_webp_66826a78-6e86-4926-bceb-9601187a8e70.webp?v=1734074271&width=2000",
+    "providerName": "GreenAura"
+  }
+]

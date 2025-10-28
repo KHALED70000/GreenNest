@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.swiper-button-next, .swiper-button-prev{
+    background: rgba(0, 0, 0, .5);
+    padding: 10px;
+    border-radius: 5px;
+}
