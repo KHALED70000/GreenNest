@@ -1,0 +1,44 @@
+[
+  {
+    "tipId": 1,
+    "title": "Watering",
+    "description": "Most indoor plants prefer their soil to dry out between waterings. Overwatering can harm roots.",
+    "icon": "💧"
+  },
+  {
+    "tipId": 2,
+    "title": "Sunlight",
+    "description": "Place plants in indirect sunlight. Direct harsh sun can scorch leaves, while too little light slows growth.",
+    "icon": "☀️"
+  },
+  {
+    "tipId": 3,
+    "title": "Fertilizing",
+    "description": "Feed plants with a balanced liquid fertilizer every 4-6 weeks during growing season. Avoid over-fertilizing.",
+    "icon": "🌱"
+  },
+  {
+    "tipId": 4,
+    "title": "Humidity",
+    "description": "Many tropical plants thrive in 50-60% humidity. Mist leaves or use a humidifier if air is dry.",
+    "icon": "💦"
+  },
+  {
+    "tipId": 5,
+    "title": "Pruning",
+    "description": "Remove yellow or dead leaves regularly to promote healthy growth and improve appearance.",
+    "icon": "✂️"
+  },
+  {
+    "tipId": 6,
+    "title": "Repotting",
+    "description": "Repot plants every 1-2 years or when roots outgrow the pot. Use fresh soil and a slightly larger container.",
+    "icon": "🪴"
+  },
+  {
+    "tipId": 7,
+    "title": "Pest Control",
+    "description": "Check plants regularly for pests like aphids or spider mites. Treat early with insecticidal soap if needed.",
+    "icon": "🐛"
+  }
+]

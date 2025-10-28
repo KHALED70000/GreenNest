@@ -27,7 +27,7 @@ const Swiperhero = () => {
             <SwiperSlide>
                 <div className='relative'>
                     <img className='w-full h-[500px] max-[600px]:h-[300px]' src="https://media.istockphoto.com/id/476116580/photo/sycamore-tree-in-summer-field-at-sunset-england-uk.jpg?s=1024x1024&w=is&k=20&c=EWTo2iZxyGXOZ_aF9UUJ8UgYQD5uG2rs5hFSi9jnJXk=" alt="slide 1" />
-                    <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full'>
+                    <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full max-[600px]:text-[30px]'>
                         Care for your plants, they will <br /> care for your soul.
                     </h2>
                 </div>
@@ -43,7 +43,7 @@ const Swiperhero = () => {
             <SwiperSlide>
                 <div>
                     <img className='w-full h-[500px] max-[600px]:h-[300px]' src="https://media.istockphoto.com/id/177013469/photo/oak-tree.jpg?s=1024x1024&w=is&k=20&c=f_GQQSvZ7GzJEEK851exswBdfp5gppx0ZY8OfzSUnlg=" alt="slide 3" />
-                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full'>
+                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full max-[600px]:text-[30px]'>
                         Care for your plants, they will <br /> care for your soul.
                     </h2>
                 </div>
@@ -51,7 +51,7 @@ const Swiperhero = () => {
             <SwiperSlide>
                 <div>
                     <img className='w-full h-[500px] max-[600px]:h-[300px]' src="https://media.istockphoto.com/id/505228567/photo/little-girl-sitting-on-centennial-tree.jpg?s=1024x1024&w=is&k=20&c=-NCiubd9vfPN4g2dOomdSbvp8NuhNrZ7i3xlwVgdyEI=" alt="slide 3" />
-                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full'>
+                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full max-[600px]:text-[30px]'>
                         Care for your plants, they will <br /> care for your soul.
                     </h2>
                 </div>
@@ -59,7 +59,7 @@ const Swiperhero = () => {
             <SwiperSlide>
                 <div>
                     <img className='w-full h-[500px] max-[600px]:h-[300px]' src="https://media.istockphoto.com/id/598058914/photo/the-sun-shining-through-a-majestic-oak-tree.jpg?s=1024x1024&w=is&k=20&c=pXd0ViL6SVZplmScjhR2KNy59sc8Zzuo7u9WAGWbMUE=" alt="slide 3" />
-                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full'>
+                     <h2 className='font-bold text-5xl text-center absolute top-[50%] bottom-[-50%] text-black w-full max-[600px]:text-[30px]'>
                         Care for your plants, they will <br /> care for your soul.
                     </h2>
                 </div>
