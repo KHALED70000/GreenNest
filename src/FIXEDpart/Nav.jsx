@@ -26,7 +26,7 @@ const Nav = () => {
 
 
     return (
-        <div>
+        <div id="NavBar">
             <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -46,8 +46,9 @@ const Nav = () => {
                         {Links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Log In</a>
+                <div className="navbar-end gap-2">
+                    <NavLink to='/login' className="btn">Log In</NavLink>
+                    <NavLink to ='/ragistar' className="btn">Ragistar</NavLink>
                 </div>
             </div>
         </div>

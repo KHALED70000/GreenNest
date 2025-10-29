@@ -10,13 +10,16 @@ import Plants from './PAGES/Plants.jsx';
 import Profile from './PAGES/Profile.jsx';
 import Error from './PAGES/Error.jsx';
 import Viewdetail from './PAGES/Viewdetail.jsx';
+import Login from './PAGES/AuthenticationPage/Login.jsx';
+import Ragostar from './PAGES/AuthenticationPage/Ragostar.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
+    // hydrateFallback: <Error></Error>,
     children: [
       {
         index: true,
@@ -42,6 +45,14 @@ const router = createBrowserRouter([
           return app;
         },
         Component: Viewdetail,
+      },
+      {
+        path: '/login',
+        element: <Login></Login> ,
+      },
+      {
+        path: '/ragistar',
+        element: <Ragostar></Ragostar> ,
       },
       {
         path: '*',
