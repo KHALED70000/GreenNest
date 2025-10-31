@@ -1,10 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { use } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Nav = () => {
-
-
     const Links = <>
         <li>
             <NavLink to="/" style={({ isActive }) => isActive ? { borderBottom: '2px solid white' } : undefined}>
@@ -23,7 +22,18 @@ const Nav = () => {
         </li>
     </>
 
+    const { user, LogOut } = use(AuthContext)
+    const navigate = useNavigate();
 
+    const habdleLogOut = () => {
+        LogOut().then(() => {
+            navigate("/login"); 
+        }).catch((error) => {
+            console.log(error.message)
+        });
+    }
+
+    const demoPhoto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
     return (
         <div id="NavBar">
@@ -36,7 +46,7 @@ const Nav = () => {
                         <ul
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                           {Links}
+                            {Links}
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">GreenNest</a>
@@ -47,8 +57,15 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-2">
-                    <NavLink to='/login' className="btn">Log In</NavLink>
-                    <NavLink to ='/ragistar' className="btn">Ragistar</NavLink>
+
+                    <div className='h-[50px] w-[50px] rounded-full overflow-hidden'>
+                        <img className='w-full h-full object-center' src={user?.photoURL ? user.photoURL : demoPhoto} alt="" />
+                        
+                    </div>
+
+                    {
+                        user ? <button onClick={habdleLogOut} className='btn'>Log Out</button> : <NavLink to='/login' className="btn">Log In</NavLink>
+                    }
                 </div>
             </div>
         </div>

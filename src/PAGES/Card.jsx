@@ -1,14 +1,15 @@
-import React from 'react';
+// import React, { use } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
-const Card = ({tree}) => {
+const Card = ({ tree }) => {
+   // const { user } = use(AuthContext)
 
-
-    return (
-       <div className='p-4 bg-black rounded-2xl'>
-        <div className='w-full'>
+   return (
+      <div className='p-4 bg-black rounded-2xl'>
+         <div className='w-full'>
             <img className='w-full aspect-square object-cover rounded-[5px]' src={tree.image} alt="" />
-        </div>
+         </div>
 
          <div className='my-2 flex justify-between items-center'>
             <p className='text-[20px] font-semibold text-green-500 '><span className='text-white'>Name:</span> {tree.plantName}</p>
@@ -19,13 +20,21 @@ const Card = ({tree}) => {
             <p className='font-semibold text-[20px] text-blue-400'>Care Level: <span className='bg-gray-700 py-1 px-2 rounded-full text-[15px]'>{tree.careLevel}</span></p>
             <p className='text-[20px] text-white font-semibold'>Price: <span className='font-bold text-green-400 text-3xl'>${tree.price}</span></p>
          </div>
-         <NavLink to={`/viewdetail/${tree.plantId}`}>
+         {/* <NavLink to={`/viewdetail/${tree.plantId}`}>
             <div className='bg-green-500 py-2 text-black font-bold text-center rounded-[5px]' title='Click Here'>
                 View Details
             </div>
+         </NavLink> */}
+
+         <NavLink to={`/viewdetail/${tree.plantId}`}>
+            <div className='bg-green-500 py-2 text-black font-bold text-center rounded-[5px]' title='Click Here'>
+               View Details
+            </div>
          </NavLink>
-       </div>
-    );
+      </div>
+   );
 };
 
 export default Card;
+
+// { user ? `/viewdetail/${tree.plantId}` : '/login'}

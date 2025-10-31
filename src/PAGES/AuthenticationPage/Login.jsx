@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from "react-icons/fc";
-import { NavLink } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Loading from '../../Loader/Loading';
 
 const Login = () => {
+
+    const { LogIn, setUser } = use(AuthContext)
+    const navigate = useNavigate();
+
+    const [error, setError] = useState('')
+
+    const location = useLocation();
+
+
+
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -10,8 +23,26 @@ const Login = () => {
 
         const EMAIL = form.email.value;
         const PASSWORD = form.password.value;
-        console.log(EMAIL, PASSWORD)
+
+
+        LogIn(EMAIL, PASSWORD)
+            .then((userCredential) => {
+
+                const user = userCredential.user;
+                setUser(user)
+                navigate(`${location.state ? location.state : "/"}`);
+
+            })
+            .catch(() => {
+                // const errorMessage = error.message;
+                setError('Worong password!')
+            });
     }
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     return (
         <div className='max-w-[1140px] mx-auto'>
@@ -33,12 +64,21 @@ const Login = () => {
                                 <fieldset className="fieldset">
 
                                     <label className="label">Email</label>
-                                    <input type="email" className="input" placeholder="Email" name='email' required/>
+                                    <input type="email" className="input" placeholder="Email" name='email' required />
 
                                     <label className="label">Password</label>
-                                    <input type="password" className="input" placeholder="Password" name='password' required/>
+                                    <div className='relative'>
+                                        <input type={showPassword ? "text" : "password"} className="input" placeholder="Password" name='password' required />
+                                        <span className='h-full absolute top-0 p-3 right-4 cursor-pointer' onClick={togglePassword}>
+                                            {showPassword ? <FaEyeSlash size={17} /> : <FaEye size={17} />}
+                                        </span>
+                                    </div>
 
                                     <div><a className="link link-hover">Forgot password?</a></div>
+
+                                    {
+                                        error ? <p className='text-red-600 font-bold text-center'>{error}</p> : ""
+                                    }
 
                                     <button className="btn btn-neutral mt-4">Login</button>
                                 </fieldset>

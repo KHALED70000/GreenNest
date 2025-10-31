@@ -2,7 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+
 import { createBrowserRouter } from "react-router";
+
+
 import { RouterProvider } from "react-router/dom";
 import Root from './Root.jsx';
 import Home from './PAGES/Home.jsx';
@@ -12,6 +15,10 @@ import Error from './PAGES/Error.jsx';
 import Viewdetail from './PAGES/Viewdetail.jsx';
 import Login from './PAGES/AuthenticationPage/Login.jsx';
 import Ragostar from './PAGES/AuthenticationPage/Ragostar.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
+import Privetrout from './Provider/Privetrout.jsx';
+import Loading from './Loader/Loading.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -19,23 +26,28 @@ const router = createBrowserRouter([
     path: "/",
     Component: Root,
     errorElement: <Error></Error>,
-    // hydrateFallback: <Error></Error>,
     children: [
       {
         index: true,
         path: '/',
         loader: () => fetch('/Fakedata.json'),
         Component: Home,
+        hydrateFallbackElement: <Loading></Loading>
 
       },
       {
         path: '/plants',
         loader: () => fetch('/Fakedata.json'),
-        Component: Plants,
+        element: (<Privetrout>
+          <Plants></Plants>
+        </Privetrout>),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/profile',
-        Component: Profile
+        element: <Privetrout>
+          <Profile></Profile>
+        </Privetrout>
       },
       {
         path: "/viewdetail/:plantId",
@@ -44,15 +56,17 @@ const router = createBrowserRouter([
           const app = data.find(item => String(item.plantId) === params.plantId);
           return app;
         },
-        Component: Viewdetail,
+        element: <Privetrout>
+          <Viewdetail></Viewdetail>
+        </Privetrout>
       },
       {
         path: '/login',
-        element: <Login></Login> ,
+        element: <Login></Login>,
       },
       {
         path: '/ragistar',
-        element: <Ragostar></Ragostar> ,
+        element: <Ragostar></Ragostar>,
       },
       {
         path: '*',
@@ -64,6 +78,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+
+
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+
+
+  </StrictMode>
+);

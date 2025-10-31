@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from '../Loader/Loading';
+import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Viewdetail = () => {
     const data = useLoaderData();
+    const { loading } = use(AuthContext)
 
+    if(loading){
+        return <Loading></Loading>;
+    }
 
     const formSubmit = (e) => {
         e.preventDefault();

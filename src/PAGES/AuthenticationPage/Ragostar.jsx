@@ -1,18 +1,71 @@
-import React from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { NavLink } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Navigate, NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Ragostar = () => {
 
+    const { user, updateUser } = use(AuthContext)
 
+    const { createUser, setUser } = use(AuthContext);
+    const [error, setError] = useState('');
+    const [validpass, setValidpass] = useState('');
+
+
+    const navigate = useNavigate();
     const handleRagistar = (e) => {
         e.preventDefault();
         const form = e.target;
 
+        const NAME = form.name.value;
+        const PHOTO = form.photourl.value;
+
         const EMAIL = form.email.value;
         const PASSWORD = form.password.value;
 
+        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        const passwordErrorMessage = "Password must be at least 8 characters long and include: one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*).";
+
+
+        if (!strongPasswordRegex.test(PASSWORD)) {
+            setValidpass(passwordErrorMessage)
+            return;
+        } else {
+            setValidpass('')
+        }
+
+        createUser(EMAIL, PASSWORD)
+            .then((result) => {
+                const user = result.user;
+                updateUser({ displayName: NAME, photoURL: PHOTO }).then(() => {
+                    // Profile updated!
+                    // ...
+                setUser({...user, displayName: NAME, photoURL: PHOTO })
+
+                }).catch(() => {
+                    setUser(user)
+                });
+
+
+                navigate("/");
+            }).catch(() => {
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+                // console.log(errorCode, errorMessage)
+                setError("This email account is already used! Tyr another...")
+            });
+
+        if (user) {
+            form.reset()
+        }
     }
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    };
 
 
     return (
@@ -32,27 +85,42 @@ const Ragostar = () => {
                         <div className="card-body">
 
                             <form onSubmit={handleRagistar}>
+
                                 <fieldset className="fieldset">
                                     {/* Name */}
-                                     <label className="label">Name</label>
-                                    <input type="text" className="input" placeholder="Your Name" name='name' />
+                                    <label className="label">Name</label>
+                                    <input type="text" className="input" placeholder="Your Name" name='name' required/>
                                     {/* Photo URL */}
-                                     <label className="label">Photo URL</label>
-                                    <input type="url" className="input" placeholder="Photo URL" name='photourl' />
+                                    <label className="label">Photo URL</label>
+                                    <input type="url" className="input" placeholder="Photo URL" name='photourl' required/>
                                     {/* Email */}
                                     <label className="label">Email</label>
                                     <input type="email" className="input" placeholder="Email" name='email' required />
+
                                     {/* Password */}
                                     <label className="label">Password</label>
-                                    <input type="password" className="input" placeholder="Password" name='password' required />
+                                    <div className='relative'>
+                                        <input type={showPassword ? "text" : "password"} className="input" placeholder="Password" name='password' required />
+                                        <span className='h-full absolute top-0 p-3 right-4 cursor-pointer' onClick={togglePassword}>
+                                            {showPassword ? <FaEyeSlash size={17} /> : <FaEye size={17} />}
+                                        </span>
+                                    </div>
 
-                                    <div><a className="link link-hover">Forgot password?</a></div>
+
+                                    {
+                                        error ? <p className='text-red-600 font-bold text-center'>{error}</p> : ""
+                                    }
+                                    {
+                                        validpass ? <p className='text-red-600 font-bold text-center'>{validpass}</p> : ""
+                                    }
+
 
                                     <button type='submit' className="btn btn-neutral mt-4">Ragister</button>
                                 </fieldset>
+
                             </form>
                             <button className="btn btn-neutral"><FcGoogle size={24} /> Ragister with Google</button>
-                            
+
                             <p>
                                 Already have an account? <span className='underline text-green-400 font-semibold'><NavLink to='/login'>Log In</NavLink></span>
                             </p>
