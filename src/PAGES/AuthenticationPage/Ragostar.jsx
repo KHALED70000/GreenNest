@@ -4,10 +4,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navigate, NavLink } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../Provider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Ragostar = () => {
 
-    const { user, updateUser } = use(AuthContext)
+    const { user, updateUser, googleLogin } = use(AuthContext)
 
     const { createUser, setUser } = use(AuthContext);
     const [error, setError] = useState('');
@@ -42,7 +43,7 @@ const Ragostar = () => {
                 updateUser({ displayName: NAME, photoURL: PHOTO }).then(() => {
                     // Profile updated!
                     // ...
-                setUser({...user, displayName: NAME, photoURL: PHOTO })
+                    setUser({ ...user, displayName: NAME, photoURL: PHOTO })
 
                 }).catch(() => {
                     setUser(user)
@@ -61,6 +62,34 @@ const Ragostar = () => {
             form.reset()
         }
     }
+
+
+    //google sign up
+    const provider = new GoogleAuthProvider();
+    const ContinueWithGoogle = () => {
+        googleLogin(provider).then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            // const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            setUser(user)
+            navigate(`${location.state ? location.state : "/"}`);
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+        }).catch(() => {
+            // Handle Errors here.
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            // // The email of the user's account used.
+            // const email = error.customData.email;
+            // // The AuthCredential type that was used.
+            // const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+            setError("Wrong password")
+        });
+    }
+    //google sign up end
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
@@ -89,10 +118,10 @@ const Ragostar = () => {
                                 <fieldset className="fieldset">
                                     {/* Name */}
                                     <label className="label">Name</label>
-                                    <input type="text" className="input" placeholder="Your Name" name='name' required/>
+                                    <input type="text" className="input" placeholder="Your Name" name='name' required />
                                     {/* Photo URL */}
                                     <label className="label">Photo URL</label>
-                                    <input type="url" className="input" placeholder="Photo URL" name='photourl' required/>
+                                    <input type="url" className="input" placeholder="Photo URL" name='photourl' required />
                                     {/* Email */}
                                     <label className="label">Email</label>
                                     <input type="email" className="input" placeholder="Email" name='email' required />
@@ -119,7 +148,7 @@ const Ragostar = () => {
                                 </fieldset>
 
                             </form>
-                            <button className="btn btn-neutral"><FcGoogle size={24} /> Ragister with Google</button>
+                            <button onClick={ContinueWithGoogle} className="btn btn-neutral"><FcGoogle size={24} /> Ragister with Google</button>
 
                             <p>
                                 Already have an account? <span className='underline text-green-400 font-semibold'><NavLink to='/login'>Log In</NavLink></span>

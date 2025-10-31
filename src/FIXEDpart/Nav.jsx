@@ -49,7 +49,10 @@ const Nav = () => {
                             {Links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">GreenNest</a>
+                    <a className="btn btn-ghost text-xl">
+                        <img className='h-full mr-2' src="https://cdn-icons-png.freepik.com/256/6487/6487494.png?semt=ais_white_label" alt="logo" />
+                        GreenNest
+                    </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
