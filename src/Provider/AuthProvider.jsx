@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../Firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 // import { useLocation } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
+    // console.log(user)
 
     const createUser = (email, password) => {
         setLoading(true)
@@ -37,30 +37,37 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateUser = (updateData) => {
-        return updateProfile(auth.currentUser, updateData);
-    }
 
+const updateUser = (updateData) => {
+    return updateProfile(auth.currentUser, updateData);
+}
 
-    // console.log(user)
-    const authData = {
-        user,
-        setUser,
-        createUser,
-        LogOut,
-        LogIn,
-        loading,
-        setLoading,
-        updateUser,
+//google log in
 
-      
-    };
+const googleLogin = (provider) => {
+    return signInWithPopup(auth, provider)
+}
+//googlee log in end
 
-    return (
-        <AuthContext.Provider value={authData}>
-            {children}
-        </AuthContext.Provider>
-    );
+// console.log(user)
+const authData = {
+    user,
+    setUser,
+    createUser,
+    LogOut,
+    LogIn,
+    googleLogin,
+    loading,
+    setLoading,
+    updateUser,
+
+};
+
+return (
+    <AuthContext.Provider value={authData}>
+        {children}
+    </AuthContext.Provider>
+);
 };
 
 export default AuthProvider;

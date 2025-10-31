@@ -27,7 +27,7 @@ const Nav = () => {
 
     const habdleLogOut = () => {
         LogOut().then(() => {
-            navigate("/login"); 
+            navigate("/login");
         }).catch((error) => {
             console.log(error.message)
         });
@@ -59,8 +59,9 @@ const Nav = () => {
                 <div className="navbar-end gap-2">
 
                     <div className='h-[50px] w-[50px] rounded-full overflow-hidden'>
-                        <img className='w-full h-full object-center' src={user?.photoURL ? user.photoURL : demoPhoto} alt="" />
                         
+                        <img className='w-full h-full object-center' src={user?.photoURL ? user.photoURL : demoPhoto} alt="" />
+
                     </div>
 
                     {
@@ -73,3 +74,16 @@ const Nav = () => {
 };
 
 export default Nav;
+
+
+{/* <div className="navbar-end gap-2">
+
+    <div className='h-[50px] w-[50px] rounded-full overflow-hidden'>
+        <img className='w-full h-full object-center' src={user?.photoURL ? user.photoURL : demoPhoto} alt="" />
+
+    </div>
+
+    {
+        user ? <button onClick={habdleLogOut} className='btn'>Log Out</button> : <NavLink to='/login' className="btn">Log In</NavLink>
+    }
+</div> */}

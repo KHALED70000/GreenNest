@@ -4,10 +4,16 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Loading from '../../Loader/Loading';
+import { GoogleAuthProvider } from 'firebase/auth';
+
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+// import app from "../Firebase/firebase.config";
+
 
 const Login = () => {
 
-    const { LogIn, setUser } = use(AuthContext)
+    const { LogIn, googleLogin, setUser } = use(AuthContext)
+    const provider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
     const [error, setError] = useState('')
@@ -33,11 +39,37 @@ const Login = () => {
                 navigate(`${location.state ? location.state : "/"}`);
 
             })
-            .catch(() => {
+            .catch((error) => {
                 // const errorMessage = error.message;
-                setError('Worong password!')
+                setError(error.message)
             });
     }
+
+    const ContinueWithGoogle = () => {
+        googleLogin(provider).then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            // const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            setUser(user)
+            navigate(`${location.state ? location.state : "/"}`);
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+        }).catch(() => {
+            // Handle Errors here.
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            // // The email of the user's account used.
+            // const email = error.customData.email;
+            // // The AuthCredential type that was used.
+            // const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+            setError("Wrong password")
+        });
+    }
+
+
 
     const [showPassword, setShowPassword] = useState(false);
     const togglePassword = () => {
@@ -85,7 +117,7 @@ const Login = () => {
 
                             </form>
 
-                            <button className="btn btn-neutral"><FcGoogle size={24} /> Login with Google</button>
+                            <button className="btn btn-neutral" onClick={ContinueWithGoogle}><FcGoogle size={24} /> Login with Google</button>
                             <p>
                                 Don`t have an account? <span className='underline text-green-400 font-semibold'><NavLink to='/ragistar'>Ragister</NavLink></span>
                             </p>
